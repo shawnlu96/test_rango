@@ -13,5 +13,8 @@
                  alt="Picture of Rango in the about page" />
             <img src="{{ MEDIA_URL }}cat.jpg"
                  alt="Cat media image" />
+        {% if visits %}
+            visits: {{ visits }}
+        {% endif %}
         </div>
 {% endblock %}

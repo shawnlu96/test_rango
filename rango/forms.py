@@ -21,8 +21,8 @@ class PageForm(forms.ModelForm):
     title = forms.CharField(max_length=128,
                             help_text="Please enter the title of the page.")
 
-    url = forms.CharField(max_length=200,
-                          help_text="Please enter the URL of the page.")
+    url = forms.URLField(max_length=200,
+                         help_text="Please enter the URL of the page.")
     views = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
 
     def clean(self):
@@ -43,9 +43,9 @@ class PageForm(forms.ModelForm):
         # Some fields may allow NULL values, so we may not want to include them.
         # Here, we are hiding the foreign key.
         # we can either exclude the category field from the form,
-        exclude = ('category',)
+        # exclude = ('category',)
         # or specify the fields to include (i.e. not include the category field)
-        # fields = ('title', 'url', 'views')
+        fields = ('title', 'url', 'views')
 
 
 class UserForm(forms.ModelForm):
